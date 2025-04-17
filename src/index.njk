@@ -22,7 +22,7 @@
           <button id="domainDisplayReverse" class="max-w-1/2 bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded-lg transition duration-300 transform hover:scale-105">
             switch word order
           </button>
-          <button id="domainDisplayCheckButton" class="max-w-1/2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-4 rounded-lg transition duration-300 transform hover:scale-105">
+          <button id="checkAvailabiltyButton" class="max-w-1/2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-4 rounded-lg transition duration-300 transform hover:scale-105">
             check domain availabilty
           </button>
         </div>
@@ -40,7 +40,7 @@
 
     const domainDisplay = document.getElementById("domainDisplay");
     const domainDisplayReverse = document.getElementById("domainDisplayReverse");
-    const domainDisplayCheckButton = document.getElementById("domainDisplayCheckButton");
+    const checkAvailabiltyButton = document.getElementById("checkAvailabiltyButton");
     const generateButton = document.getElementById("generateButton");
 
     let order = "normal"
@@ -70,11 +70,17 @@
       }
     }
 
+    const checkAvailabilty = ()=>{
+      let url = `https://www.godaddy.com/en-uk/domainsearch/find?domainToCheck=${domainDisplay.textContent}`
+      window.open(url, '_blank').focus();
+    }
+
     updateDomain()
 
     // Add click event listener
     generateButton.addEventListener("click", updateDomain);
     domainDisplayReverse.addEventListener("click", switchOrder);
+    checkAvailabiltyButton.addEventListener("click", checkAvailabilty);
   </script>
 </body>
 
