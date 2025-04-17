@@ -6,12 +6,15 @@ export default (eleventyConfig) => {
     input: 'css/tailwind.css' 
   } );
 
+  eleventyConfig.addPassthroughCopy("src/js");
+
 };
 
 export const config = {
   htmlTemplateEngine: "njk",
   dir: {
     input: "src",
-    output: "dist"
+    output: "dist",
+    data: "_data"
   },
 };
