@@ -16,43 +16,66 @@
       <h1 class="text-4xl font-bold text-gray-800 mb-6">Two Word Domains</h1>
       <p class="text-gray-600 mb-8">Discover your perfect domain name</p>
 
-      <div class="mb-8">
-        <div id="domainDisplay" class="text-3xl font-mono text-blue-600 mb-4 min-h-[2.5rem]"></div>
-        <button id="generateButton" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+      <div class="mb-8 flex flex-col gap-4 justify-items-center ">
+        <p id="domainDisplay" class=" max-w-full text-3xl font-mono text-blue-600 mb-4"></p>
+        <div class="flex flex-row gap-2 justify-center">
+          <button id="domainDisplayReverse" class="max-w-1/2 bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded-lg transition duration-300 transform hover:scale-105">
+            switch word order
+          </button>
+          <button id="domainDisplayCheckButton" class="max-w-1/2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-4 rounded-lg transition duration-300 transform hover:scale-105">
+            check domain availabilty
+          </button>
+        </div>
+        <button id="generateButton" class="mx-auto w-1/2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
           Generate New Domain
         </button>
       </div>
 
-      <div class="text-sm text-gray-500">
-        <p>Click the button above to generate a new domain name</p>
-      </div>
+
     </div>
   </div>
 
   <script type="module">
     import { words } from "./js/words.js";
 
-    function generateDomainName() {
-      // Get two random words from the words array
-      const firstWord = words[Math.floor(Math.random() * words.length)];
-      const secondWord = words[Math.floor(Math.random() * words.length)];
-
-      // Combine the words and append .com
-      return `${firstWord}${secondWord}.com`;
-    }
-
     const domainDisplay = document.getElementById("domainDisplay");
+    const domainDisplayReverse = document.getElementById("domainDisplayReverse");
+    const domainDisplayCheckButton = document.getElementById("domainDisplayCheckButton");
     const generateButton = document.getElementById("generateButton");
 
-    function updateDomain() {
-      domainDisplay.textContent = generateDomainName();
+    let order = "normal"
+    let firstWord;
+    let secondWord;
+
+    const updateDomain = () => {
+
+      const randomWord = () => {
+        return words[Math.floor(Math.random() * words.length)];
+      }
+      // Get two random words from the words array
+      firstWord = randomWord();
+      secondWord = randomWord();
+
+      domainDisplay.textContent = `${firstWord}${secondWord}.com`
     }
 
-    // Generate initial domain
-    updateDomain();
+    const switchOrder = () => {
+      console.log("switchOrder", order)
+      if (order == 'normal') {
+        order = 'reverse'
+        domainDisplay.textContent = `${firstWord}${secondWord}.com`
+      } else {
+        order = 'normal'
+        domainDisplay.textContent = `${secondWord}${firstWord}.com`
+      }
+    }
+
+    updateDomain()
 
     // Add click event listener
     generateButton.addEventListener("click", updateDomain);
+    domainDisplayReverse.addEventListener("click", switchOrder);
   </script>
 </body>
+
 </html>
