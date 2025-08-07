@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,78 +7,90 @@
   <link rel="stylesheet" href="/styles.css" />
   <title>Two Word Domains</title>
 </head>
-
-<body>
-  <div class="min-h-screen bg-gradient-to-br from-blue-100 to-orange-100 flex flex-col items-center justify-center p-4">
-    <div class="max-w-2xl w-full bg-white rounded-2xl shadow-xl p-8 text-center">
-      <h1 class="text-4xl font-bold text-gray-800 mb-6">Two Word Domains</h1>
-      <p class="text-gray-600 mb-8">Discover your perfect domain name</p>
-
-      <div class="mb-8 flex flex-col gap-4 justify-items-center ">
-        <p id="domainDisplay" class=" max-w-full text-3xl font-mono text-blue-600 mb-4"></p>
-        <div class="flex flex-row gap-2 justify-center">
-          <button id="domainDisplayReverse" class="max-w-1/2 bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded-lg transition duration-300 transform hover:scale-105">
-            switch word order
-          </button>
-          <button id="checkAvailabiltyButton" class="max-w-1/2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-4 rounded-lg transition duration-300 transform hover:scale-105">
-            check domain availabilty
-          </button>
+<body class="bg-[#f7f8fa] min-h-screen font-sans text-gray-900 antialiased">
+  <div class="min-h-screen flex flex-col items-center px-4 py-12">
+    <header class="w-full max-w-2xl mx-auto mb-8">
+      <h1 class="text-5xl font-extrabold tracking-tight text-center mb-2">Two Word Domains</h1>
+      <p class="text-lg text-gray-500 font-medium text-center">Discover your perfect domain name</p>
+    </header>
+    <main class="w-[95vw] max-w-4xl mx-auto bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+      <div class="w-full flex flex-col items-center">
+        <div class="w-full pt-6 pb-6 px-6 flex flex-col items-center space-y-6">
+          <div id="notificationArea" class="w-full h-10 flex items-center justify-center">
+            <div id="notification" class="hidden bg-green-100 border border-green-200 text-green-700 px-4 py-2 rounded-lg"></div>
+          </div>
+          <div class="w-full flex flex-col items-center gap-6">
+        <div class="w-full flex flex-col items-center gap-6">
+          <div class="flex flex-col items-center gap-6">
+            <p id="domainDisplay" class="text-4xl font-semibold text-gray-900 select-all min-h-[48px] transition-opacity duration-100"></p>
+            <div class="flex flex-row items-center gap-3">
+              <button id="lockFirstWord" 
+                aria-label="Toggle lock on first word" 
+                class="lock-toggle w-10 h-10 rounded-md border flex items-center justify-center bg-white hover:bg-gray-50 border-gray-300 text-gray-600 group relative cursor-pointer"
+                data-tooltip="Lock first word">
+                <div class="absolute invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-[opacity] duration-100 group-hover:duration-200 delay-[750ms] bg-gray-900 text-white text-sm rounded py-1 px-2 bottom-full mb-2 whitespace-nowrap">
+                  Lock first word
+                </div>
+                <svg id="lockFirstWordUnlocked" class="w-5 h-5" viewBox="0 0 310 500" fill="currentColor">
+                  <path d="M154.999995,5.99999 C92.434415,5.99999 41.574215,56.18554 41.574215,117.87694 L41.574215,183.10741 C41.5006861,183.698949 41.5006861,184.297121 41.574215,184.88866 L41.574215,185.01561 L41.593715,185.01561 C42.1227395,188.660409 45.3149466,191.351797 49.050745,191.30272 L86.705045,191.30272 C90.4401055,191.350823 93.6311939,188.659675 94.160125,185.01561 L94.249925,185.01561 L94.249925,117.18358 C94.249925,83.97999 121.370735,57.23642 154.999925,57.23632 C188.629105,57.23641 215.747965,83.98 215.747965,117.18358 L215.747965,229.53319 L33.236255,229.53319 C14.952295,229.53319 -7.5e-05,244.24701 -7.5e-05,262.24022 L-7.5e-05,473.29296 C-7.5e-05,491.28618 14.952295,505.99999 33.236255,505.99999 L276.763585,505.99999 C295.047515,505.99999 309.999925,491.28619 309.999925,473.29296 L309.999925,262.24022 C309.999925,244.24702 295.047515,229.53319 276.763585,229.53319 L268.425695,229.53319 L268.425695,117.87694 C268.425695,56.18554 217.565515,5.99999 154.999925,5.99999 L154.999995,5.99999 Z M193.419905,52.99999 L193.509705,52.99999 L193.568305,53.08399 C193.519405,53.05519 193.468905,53.02869 193.419865,52.99999 L193.419905,52.99999 Z M294.999985,260.08202 C295.082185,260.79031 295.134755,261.5067 295.134755,262.24022 L295.134755,473.29296 C295.134755,474.02648 295.082155,474.74483 294.999985,475.45311 L294.999985,260.08202 L294.999985,260.08202 Z M154.999995,309.89257 C171.40182,309.89257 184.698529,323.188005 184.699205,339.58983 C184.695884,349.632168 179.617768,358.992625 171.201155,364.47069 L174.091785,429.99999 L135.908195,429.99999 L138.798825,364.45116 C130.388014,358.976877 125.310695,349.625238 125.300775,339.58983 C125.301451,323.188001 138.598166,309.89257 154.999995,309.89257 L154.999995,309.89257 Z" />
+                </svg>
+                <svg id="lockFirstWordLocked" class="hidden w-5 h-5" viewBox="0 0 310 500" fill="currentColor">
+                  <path d="M155,6 C92.43442,6 41.57332,56.18604 41.57332,117.87744 L41.57332,229.53363 L33.23544,229.53363 C14.95148,229.53363 0,244.24764 0,262.24084 L0,473.29278 C0,491.286 14.95148,506 33.23544,506 L276.76456,506 C295.04849,506 310,491.28601 310,473.29278 L310,262.24084 C310,244.24764 295.04849,229.53363 276.76456,229.53363 L268.42667,229.53363 L268.42667,117.87744 C268.42667,56.18604 217.5656,6 155,6 L155,6 Z M155,57.23711 C188.62919,57.23711 215.74776,83.97958 215.74776,117.18316 L215.74776,229.53363 L94.25029,229.53363 L94.25029,117.18316 C94.25029,83.97957 121.37081,57.23711 155,57.23711 L155,57.23711 Z M155,310.5826 C171.253347,310.5826 184.42969,323.566417 184.43036,339.58383 C184.427066,349.390801 179.394919,358.531869 171.0545,363.88154 L173.91896,427.875 L136.08103,427.875 L138.94549,363.86247 C130.610827,358.516488 125.579479,349.38403 125.56965,339.58383 C125.57032,323.566421 138.746657,310.5826 155,310.5826 L155,310.5826 Z" />
+                </svg>
+                <span id="lockFirstWordText" class="sr-only">Lock first word</span>
+              </button>
+              <button id="switchOrderBtn" 
+                aria-label="Switch word order" 
+                class="w-10 h-10 rounded-md border flex items-center justify-center bg-white hover:bg-gray-50 border-gray-300 text-gray-600 group relative cursor-pointer">
+                <div class="absolute invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-[opacity] duration-100 group-hover:duration-200 delay-[750ms] bg-gray-900 text-white text-sm rounded py-1 px-2 bottom-full mb-2 whitespace-nowrap pointer-events-none">
+                  Switch word order
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 81 81" class="w-6 h-6" aria-hidden="true">
+                  <g fill="currentColor" fill-rule="nonzero">
+                    <path transform="translate(18.55, 21.95) scale(1, -1) rotate(90) translate(-18.55, -21.95)" d="M40,25 L25,10 L25,19.6 C15.4,18.1 7.1,12.4 2.3,3.9 L1.4,6.1 C0.3,9 -1.2,11.7 -2.9,14.1 C4,22.8 13.9,28.4 25,29.7 L25,40 L40,25 Z"/>
+                    <path transform="translate(45.5, 40.5) scale(1, -1) rotate(90) translate(-45.5, -40.5)" d="M44.4,49.1 L45.8,45.5 C50.1,35 59.5,27.6 70.5,25.9 L70.5,35.5 L85.5,20.5 L70.5,5.5 L70.5,15.8 C58.2,17.3 47.2,24.1 40.5,34.3 C32.9,22.7 19.9,15.5 5.5,15.5 L5.5,25.5 C18.6,25.5 30.2,33.3 35.1,45.5 C30.2,57.7 18.6,65.5 5.5,65.5 L5.5,75.5 C6.3,75.5 7.2,75.5 8,75.4 C24.2,74.5 38.3,64.4 44.4,49.1 Z"/>
+                  </g>
+                </svg>
+              </button>
+              <button id="lockSecondWord" 
+                aria-label="Toggle lock on second word" 
+                class="lock-toggle w-10 h-10 rounded-md border flex items-center justify-center bg-white hover:bg-gray-50 border-gray-300 text-gray-600 group relative cursor-pointer">
+                <div class="absolute invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-[opacity] duration-100 group-hover:duration-200 delay-[750ms] bg-gray-900 text-white text-sm rounded py-1 px-2 bottom-full mb-2 whitespace-nowrap pointer-events-none">
+                  Lock second word
+                </div>
+                <svg id="lockSecondWordUnlocked" class="w-5 h-5" viewBox="0 0 310 500" fill="currentColor">
+                  <path d="M154.999995,5.99999 C92.434415,5.99999 41.574215,56.18554 41.574215,117.87694 L41.574215,183.10741 C41.5006861,183.698949 41.5006861,184.297121 41.574215,184.88866 L41.574215,185.01561 L41.593715,185.01561 C42.1227395,188.660409 45.3149466,191.351797 49.050745,191.30272 L86.705045,191.30272 C90.4401055,191.350823 93.6311939,188.659675 94.160125,185.01561 L94.249925,185.01561 L94.249925,117.18358 C94.249925,83.97999 121.370735,57.23642 154.999925,57.23632 C188.629105,57.23641 215.747965,83.98 215.747965,117.18358 L215.747965,229.53319 L33.236255,229.53319 C14.952295,229.53319 -7.5e-05,244.24701 -7.5e-05,262.24022 L-7.5e-05,473.29296 C-7.5e-05,491.28618 14.952295,505.99999 33.236255,505.99999 L276.763585,505.99999 C295.047515,505.99999 309.999925,491.28619 309.999925,473.29296 L309.999925,262.24022 C309.999925,244.24702 295.047515,229.53319 276.763585,229.53319 L268.425695,229.53319 L268.425695,117.87694 C268.425695,56.18554 217.565515,5.99999 154.999925,5.99999 L154.999995,5.99999 Z M193.419905,52.99999 L193.509705,52.99999 L193.568305,53.08399 C193.519405,53.05519 193.468905,53.02869 193.419865,52.99999 L193.419905,52.99999 Z M294.999985,260.08202 C295.082185,260.79031 295.134755,261.5067 295.134755,262.24022 L295.134755,473.29296 C295.134755,474.02648 295.082155,474.74483 294.999985,475.45311 L294.999985,260.08202 L294.999985,260.08202 Z M154.999995,309.89257 C171.40182,309.89257 184.698529,323.188005 184.699205,339.58983 C184.695884,349.632168 179.617768,358.992625 171.201155,364.47069 L174.091785,429.99999 L135.908195,429.99999 L138.798825,364.45116 C130.388014,358.976877 125.310695,349.625238 125.300775,339.58983 C125.301451,323.188001 138.598166,309.89257 154.999995,309.89257 L154.999995,309.89257 Z" />
+                </svg>
+                <svg id="lockSecondWordLocked" class="hidden w-5 h-5" viewBox="0 0 310 500" fill="currentColor">
+                  <path d="M155,6 C92.43442,6 41.57332,56.18604 41.57332,117.87744 L41.57332,229.53363 L33.23544,229.53363 C14.95148,229.53363 0,244.24764 0,262.24084 L0,473.29278 C0,491.286 14.95148,506 33.23544,506 L276.76456,506 C295.04849,506 310,491.28601 310,473.29278 L310,262.24084 C310,244.24764 295.04849,229.53363 276.76456,229.53363 L268.42667,229.53363 L268.42667,117.87744 C268.42667,56.18604 217.5656,6 155,6 L155,6 Z M155,57.23711 C188.62919,57.23711 215.74776,83.97958 215.74776,117.18316 L215.74776,229.53363 L94.25029,229.53363 L94.25029,117.18316 C94.25029,83.97957 121.37081,57.23711 155,57.23711 L155,57.23711 Z M155,310.5826 C171.253347,310.5826 184.42969,323.566417 184.43036,339.58383 C184.427066,349.390801 179.394919,358.531869 171.0545,363.88154 L173.91896,427.875 L136.08103,427.875 L138.94549,363.86247 C130.610827,358.516488 125.579479,349.38403 125.56965,339.58383 C125.57032,323.566421 138.746657,310.5826 155,310.5826 L155,310.5826 Z" />
+                </svg>
+                <span id="lockSecondWordText" class="sr-only">Lock second word</span>
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-row gap-2 justify-center">
+            <button id="checkAvailabilityButton" class="w-[180px] px-4 py-2 rounded-lg font-semibold bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 shadow-sm cursor-pointer">Check Availability</button>
+            <button id="saveDomainButton" class="w-[180px] px-4 py-2 rounded-lg font-semibold bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 shadow-sm cursor-pointer">Save Domain</button>
+          </div>
         </div>
-        <button id="generateButton" class="mx-auto w-1/2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
-          Generate New Domain
-        </button>
-      </div>
-      <p class="">©{{site.currentYear}} dwkns ltd</p>
-    </div>
+            <button id="generateButton" class="w-full max-w-xs mx-auto px-8 py-3 rounded-xl font-bold text-lg bg-black hover:bg-gray-800 text-white shadow-lg cursor-pointer">Generate New Domain</button>
+          </div>
+        </div>
+        <section id="savedDomains" class="w-full hidden opacity-0 transition-all duration-200 ease-in-out border-t border-gray-100">
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <h2 class="text-xl font-bold text-gray-800">Saved Domains</h2>
+              <button id="clearSavedDomainsButton" class="px-4 py-2 rounded-lg font-semibold bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 shadow-sm cursor-pointer">Clear Saved Domains</button>
+            </div>
+            <ul id="savedDomainsList" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700 font-mono text-base"></ul>
+          </div>
+        </section>
+    </main>
+    <footer class="w-full max-w-2xl mx-auto pt-12 pb-8 flex flex-col items-center">
+      <p class="text-gray-400 text-sm">©{{site.currentYear}} dwkns ltd</p>
+    </footer>
   </div>
-
-  <script type="module">
-    import { words } from "./js/words.js";
-
-    const domainDisplay = document.getElementById("domainDisplay");
-    const domainDisplayReverse = document.getElementById("domainDisplayReverse");
-    const checkAvailabiltyButton = document.getElementById("checkAvailabiltyButton");
-    const generateButton = document.getElementById("generateButton");
-
-    let order = "normal"
-    let firstWord;
-    let secondWord;
-
-    const updateDomain = () => {
-
-      const randomWord = () => {
-        return words[Math.floor(Math.random() * words.length)];
-      }
-      // Get two random words from the words array
-      firstWord = randomWord();
-      secondWord = randomWord();
-
-      domainDisplay.textContent = `${firstWord}${secondWord}.com`
-    }
-
-    const switchOrder = () => {
-      console.log("switchOrder", order)
-      if (order == 'normal') {
-        order = 'reverse'
-        domainDisplay.textContent = `${firstWord}${secondWord}.com`
-      } else {
-        order = 'normal'
-        domainDisplay.textContent = `${secondWord}${firstWord}.com`
-      }
-    }
-
-    const checkAvailabilty = ()=>{
-      let url = `https://www.godaddy.com/en-uk/domainsearch/find?domainToCheck=${domainDisplay.textContent}`
-      window.open(url, '_blank').focus();
-    }
-
-    updateDomain()
-
-    // Add click event listener
-    generateButton.addEventListener("click", updateDomain);
-    domainDisplayReverse.addEventListener("click", switchOrder);
-    checkAvailabiltyButton.addEventListener("click", checkAvailabilty);
-  </script>
+  <script type="module" src="/js/domainGenerator.js"></script>
+  <script type="module" src="/js/eventHandlers.js"></script>
 </body>
-
 </html>
