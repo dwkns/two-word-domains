@@ -111,7 +111,7 @@ export const updateDomain = (forceNew = false) => {
   
   const secondWordSpan = document.createElement('span');
   secondWordSpan.textContent = displaySecond;
-  secondWordSpan.className = secondLock ? 'text-red-700' : 'text-gray-700';
+  secondWordSpan.className = secondLock ? 'text-red-700' : 'text-gray-500';
   
   domainDisplay.appendChild(firstWordSpan);
   domainDisplay.appendChild(secondWordSpan);
