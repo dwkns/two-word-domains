@@ -1,5 +1,5 @@
 
-import { updateDomain, switchOrder, checkAvailability, saveDomain, toggleLockFirst, toggleLockSecond, clearSavedDomains } from "./domainGenerator.js";
+import { updateDomain, switchOrder, checkAvailability, saveDomain, toggleLockFirst, toggleLockSecond, clearSavedDomains, setFirstWordLength, setSecondWordLength, getFirstWordLength, getSecondWordLength, setTld, getTld } from "./domainGenerator.js";
 
 const generateButton = document.getElementById("generateButton");
 const switchOrderBtn = document.getElementById("switchOrderBtn");
@@ -29,6 +29,37 @@ if (clearSavedDomainsButton) {
 }
 
 generateButton.addEventListener("click", debounce(() => updateDomain(true), 300));
-switchOrderBtn.addEventListener("click", switchOrder);
+switchOrderBtn.addEventListener("click", () => {
+  switchOrder();
+  if (firstWordLengthSelect) firstWordLengthSelect.value = getFirstWordLength();
+  if (secondWordLengthSelect) secondWordLengthSelect.value = getSecondWordLength();
+});
 checkAvailabilityButton.addEventListener("click", checkAvailability);
 saveDomainButton.addEventListener("click", saveDomain);
+
+// Word length selects
+const firstWordLengthSelect = document.getElementById("firstWordLength");
+const secondWordLengthSelect = document.getElementById("secondWordLength");
+
+if (firstWordLengthSelect) {
+  firstWordLengthSelect.value = getFirstWordLength();
+  firstWordLengthSelect.addEventListener("change", () => {
+    setFirstWordLength(firstWordLengthSelect.value);
+  });
+}
+
+if (secondWordLengthSelect) {
+  secondWordLengthSelect.value = getSecondWordLength();
+  secondWordLengthSelect.addEventListener("change", () => {
+    setSecondWordLength(secondWordLengthSelect.value);
+  });
+}
+
+// TLD select
+const tldSelect = document.getElementById("tldSelect");
+if (tldSelect) {
+  tldSelect.value = getTld();
+  tldSelect.addEventListener("change", () => {
+    setTld(tldSelect.value);
+  });
+}
